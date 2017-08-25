@@ -1,6 +1,6 @@
 <template>
-<!--<span id="activate">Hi my Friend</span>-->
-  <input type="button" @click.prevent="activateUser()"/>
+<span id="activate">Activated!</span>
+  <!--<input type="button" @click.prevent="activateUser()"/>-->
 </template>
 <script>
     import Vue from 'vue'
@@ -23,28 +23,24 @@
               let str = token.replace(/[#]/g, '/')
               const url = 'http://api.spidergrodno.tk/api/user'+ str;
               console.log(this.$route.hash.replace(/[#]/g, '/'));
-              request.getData(url, null, null, function (msg) {
-                 // document.getElementById('activate').innerHTML = msg;
+              request.getData(url, null,null, function (msg) {
+                  document.getElementById('activate').innerHTML = msg;
                   console.log(url);
               })
           },
-          beforeMount() {
-              this.activateUser()
-          },
+
+      },
+      beforeMount()
+      {
+          this.activateUser();
       },
 
-      mounted: {
-          activateUser: function () {
-              let token = this.getTokenFromLink();
-              let str = token.replace(/[#]/g, '/');
-              const url = 'http://api.spidergrodno.tk/api/user'+ str;
-              console.log(this.$route.hash.replace(/[#]/g, '/'));
-              request.getData(url, null, null, function (msg) {
-                  // document.getElementById('activate').innerHTML = msg;
-                  console.log(url);
-              })
-          },
-      }
+//      mounted(){
+//          this.activateUser();
+//      }
+//      mounted: function () {
+//          this.activateUser();
+//      }
 
   }
 

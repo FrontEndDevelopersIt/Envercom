@@ -88,16 +88,33 @@
             'user.password': function (value) {
                 console.log(value);
                 this.passwordMsg = validationService.CheckPswd(value);
-                this.disableBtn = validationService.checkPasswordsMatch(this.user.password, this.user.password2);
+                if(this.passwordMsg === '')
+                {
+                    if(!validationService.checkPasswordsMatch(this.user.password, this.user.password2)) {
+                        this.disableBtn = false;
+                        this.passwordMsg2 = '';
+                    }else {
+                        this.disableBtn = true;
+                    }
+                }
+                else{
+                    this.disableBtn = true;
+                }
                 console.log(this.disableBtn);
             },
             'user.password2': function (value) {
                 console.log(value);
                 this.passwordMsg2 = validationService.CheckPswd(value);
-                if(!validationService.checkPasswordsMatch(this.user.password, this.user.password2)) {
-                    this.disableBtn = false;
-                }else {
-                    this.passwordMsg2 = 'Passwords are not match';
+                if(this.passwordMsg2 === '')
+                {
+                    if(!validationService.checkPasswordsMatch(this.user.password, this.user.password2)) {
+                        this.disableBtn = false;
+                    }else {
+                        this.passwordMsg2 = 'Passwords are not match';
+                        this.disableBtn = true;
+                    }
+                }
+                else{
                     this.disableBtn = true;
                 }
                 console.log(this.disableBtn);
@@ -124,7 +141,7 @@
                     });
                 }
                 else{
-                    alert('something wrong!!!');
+                    document.getElementById('msg').innerHTML = 'something wrong!!!';
                 }
                 console.log(document.location.href);
             },

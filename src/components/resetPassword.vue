@@ -85,7 +85,7 @@
                   });
                }
               else{
-                  this.btnMsg = 'Field is required!!!';
+                  document.getElementById('msg').innerHTML = 'Field is required!!!';
               }
           }
       }

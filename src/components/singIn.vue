@@ -87,7 +87,6 @@
         },
         methods: {
             onSingIn(){
-                console.log(this.$route);
                 const url = 'http://api.spidergrodno.tk/api/login';
                 const options = {
                     email: this.user.mail,
@@ -95,16 +94,13 @@
                     remember: this.user.remember
                 };
                 if (this.user.mail === '' || this.user.password === '') {
-                    alert('All fields are required!!!')
+                    document.getElementById('msg').innerHTML = 'All fields are required!!!';
                 }
                 else {
                     request.postData(url, options, '/', function (msg) {
                         document.getElementById('msg').innerHTML = msg;
                         console.log(document.getElementById('msg').innerHTML);
                     })
-
-
-
                 }
             },
 

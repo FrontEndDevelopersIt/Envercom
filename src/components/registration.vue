@@ -227,7 +227,6 @@
                         document.getElementById('msg').innerHTML = msg;
                         console.log(document.getElementById('msg').innerHTML);
                     });
-                    localStorage.setItem('options', options);
                 }
                 else{
                     document.getElementById('msg').innerHTML = 'Не все поля заполнены!!! ';
