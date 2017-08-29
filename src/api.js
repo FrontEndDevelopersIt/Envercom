@@ -11,9 +11,8 @@ function postData(url, params, defaultUrl, callback) {
                 localStorage.setItem('JWT', response.data.data.token);
             }
              location.href = defaultUrl;
-        }else{ console.log(response.status, 'qwewrewr')}
+        }
     }).catch(error =>{
-        console.log(window);
         console.log(error.response.data.errors.detail);
         switch (error.response.status){
             case(401) :
